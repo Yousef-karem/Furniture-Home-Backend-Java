@@ -13,9 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.store.Furniture_Home.dto.ResetPasswordDto;
+import com.store.Furniture_Home.dto.UpdateProfileDto;
 @RestController
-@RequestMapping("api/")
+@RequestMapping("api/user/")
 public class AuthController {
     private final AuthService authService;
 
@@ -32,5 +33,20 @@ public class AuthController {
     public ResponseEntity<LoginResponseDto> Login(@RequestBody LoginDto loginDto)
     {
         return authService.login(loginDto);
+    }
+    @PostMapping("logout")
+    public ResponseEntity<String> Logout()
+    {
+        return authService.logout();
+    }
+    @PostMapping("reset-password")
+    public ResponseEntity<String> ResetPassword(@RequestBody ResetPasswordDto resetPasswordDto)
+    {
+        return authService.resetPassword(resetPasswordDto);
+    }
+    @PostMapping("update-profile")
+    public ResponseEntity<String> UpdateProfile(@RequestBody UpdateProfileDto updateProfileDto)
+    {
+        return authService.updateProfile(updateProfileDto);
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import com.store.Furniture_Home.dto.ResetPasswordDto;
+import com.store.Furniture_Home.dto.UpdateProfileDto;
 
 import java.util.Optional;
 
@@ -63,5 +65,38 @@ public class AuthService {
             }
         }
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+    }
+    public ResponseEntity<String> logout()
+    {
+        return ResponseEntity.status(HttpStatus.OK).body("Logout successful");
+    }
+    public ResponseEntity<String> resetPassword(ResetPasswordDto resetPasswordDto)
+    {
+        Optional<User> user = userRepository.findByEmail(resetPasswordDto.getEmail());
+        if(user.isPresent())
+        {
+            if(passwordEncoder.matches(resetPasswordDto.getOldPassword(), user.get().getPassword()))
+            {
+                user.get().setPassword(passwordEncoder.encode(resetPasswordDto.getNewPassword()));
+                userRepository.save(user.get());
+                return ResponseEntity.status(HttpStatus.OK).body("Password reset successful");
+            }
+        }
+        return ResponseEntity.status(401).body("Invalid email or old password");
+    }
+
+    public ResponseEntity<String> updateProfile(UpdateProfileDto updateProfileDto) {
+        Optional<User> user = userRepository.findByEmail(updateProfileDto.getEmail());
+        if(user.isPresent())
+        {
+            if(passwordEncoder.matches(updateProfileDto.getPassword(), user.get().getPassword()))
+            {
+                user.get().setName(updateProfileDto.getName());
+                user.get().setPhone(updateProfileDto.getPhone());
+                userRepository.save(user.get());
+                return ResponseEntity.status(HttpStatus.OK).body("Profile updated successfully");
+            }
+        }
+        return ResponseEntity.status(401).body("Invalid old email or old password");
     }
 }

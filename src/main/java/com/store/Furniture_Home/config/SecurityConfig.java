@@ -26,11 +26,10 @@ public class SecurityConfig {
                                                  JWTAuthenticationFilter jwtAuthFilter,
                                                  AuthenticationProvider authenticationProvider) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/register").permitAll()
-                        .requestMatchers("/api/login").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("Admin")
-                        .requestMatchers("/api/customer/**").hasRole("Customer")
-                        .requestMatchers("/api/user/**").authenticated()
+                        .requestMatchers("/api/user/register").permitAll()
+                        .requestMatchers("/api/user/login").permitAll()
+                        .requestMatchers("/api/user/admin/**").hasRole("Admin")
+                        .requestMatchers("/api/user/customer/**").hasRole("Customer")
                         .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
