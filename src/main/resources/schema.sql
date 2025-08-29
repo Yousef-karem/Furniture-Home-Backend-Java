@@ -48,7 +48,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Create cartitem table
-CREATE TABLE `cartitem` (
+CREATE TABLE `cartitem` (gg
   `product_id` int(11) NOT NULL,
   `cart_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
