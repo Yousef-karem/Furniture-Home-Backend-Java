@@ -1,14 +1,15 @@
 package com.store.Furniture_Home.service;
 
+import com.store.Furniture_Home.repositrory.UserRepository;
 import com.store.Furniture_Home.dto.RoleUpdateDto;
 import com.store.Furniture_Home.entites.Role;
 import com.store.Furniture_Home.entites.User;
-import com.store.Furniture_Home.repositrory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.Optional;
 
 @Service
@@ -103,5 +104,18 @@ public class UserManagementService {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body("Error deleting user: " + e.getMessage());
         }
+    }
+
+    public User getCurrentUser() throws RuntimeException {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            String email = authentication.getName();
+            Optional<User> user = userRepository.findByEmail(email);
+            if(user.isPresent())
+            {
+                return user.get();
+            }
+        }
+        throw new RuntimeException("User not authenticated");
     }
 }

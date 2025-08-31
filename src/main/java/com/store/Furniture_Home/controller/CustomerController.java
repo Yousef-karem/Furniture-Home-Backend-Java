@@ -1,4 +1,4 @@
-package com.store.Furniture_Home.controller;
+package com.store.Furniture_Home.Controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

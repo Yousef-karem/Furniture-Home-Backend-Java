@@ -4,8 +4,8 @@ public class UpdateProfileDto {
     private String name;
     private String email;
     private String password;
-    private int phone;
-    public UpdateProfileDto(String name, String email, String password, int phone, String oldPassword) {
+    private String phone;
+    public UpdateProfileDto(String name, String email, String password, String phone, String oldPassword) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -20,7 +20,7 @@ public class UpdateProfileDto {
     public String getPassword() {
         return password;
     }
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
     public void setName(String name) {
@@ -32,7 +32,7 @@ public class UpdateProfileDto {
     public void setPassword(String password) {
         this.password = password;
     }
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

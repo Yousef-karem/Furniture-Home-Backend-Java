@@ -1,14 +1,10 @@
-package com.store.Furniture_Home.controller;
+package com.store.Furniture_Home.Controller;
 
+import com.store.Furniture_Home.service.AuthService;
 import com.store.Furniture_Home.dto.LoginDto;
 import com.store.Furniture_Home.dto.LoginResponseDto;
 import com.store.Furniture_Home.dto.RegisterDto;
-import com.store.Furniture_Home.entites.User;
-import com.store.Furniture_Home.service.AuthService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

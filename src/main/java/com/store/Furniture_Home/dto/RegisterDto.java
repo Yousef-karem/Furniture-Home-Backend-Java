@@ -9,9 +9,9 @@ public class RegisterDto {
     private String name;
     private String email;
     private String password;
-    private int phone;
+    private String phone;
 
-    public RegisterDto(String name, String email, String password, int phone) {
+    public RegisterDto(String name, String email, String password, String phone) {
         this.name = name;
         this.email = email;
         this.password = password;
@@ -43,11 +43,11 @@ public class RegisterDto {
         this.password = password;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }

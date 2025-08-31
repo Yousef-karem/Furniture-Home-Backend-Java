@@ -1,4 +1,4 @@
-package com.store.Furniture_Home.controller;
+package com.store.Furniture_Home.Controller;
 
 import com.store.Furniture_Home.dto.RoleUpdateDto;
 import com.store.Furniture_Home.service.UserManagementService;

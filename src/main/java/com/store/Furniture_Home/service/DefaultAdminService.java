@@ -46,7 +46,7 @@ public class DefaultAdminService implements CommandLineRunner {
                 adminUser.setName("System Administrator");
                 adminUser.setEmail(adminEmail);
                 adminUser.setPassword(passwordEncoder.encode("admin123"));
-                adminUser.setPhone(1234567890);
+                adminUser.setPhone("1234567890");
                 adminUser.setRole(Role.Admin);
                 adminUser.setCart(adminCart);
                 
