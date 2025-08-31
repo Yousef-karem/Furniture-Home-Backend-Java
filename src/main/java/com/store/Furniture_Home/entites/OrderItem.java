@@ -9,7 +9,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Column;
 import com.store.Furniture_Home.Entity.Product;
-import com.store.Furniture_Home.entites.Order;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity

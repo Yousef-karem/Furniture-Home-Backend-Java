@@ -1,10 +1,5 @@
 package com.store.Furniture_Home.dto;
 
-
-import com.store.Furniture_Home.entites.Cart;
-import com.store.Furniture_Home.entites.Role;
-import jakarta.persistence.*;
-
 public class RegisterDto {
     private String name;
     private String email;

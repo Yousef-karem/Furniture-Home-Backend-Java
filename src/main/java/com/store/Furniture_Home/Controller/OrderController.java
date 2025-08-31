@@ -13,8 +13,6 @@ import com.store.Furniture_Home.entites.Order;
 import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import com.store.Furniture_Home.entites.State;
-
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {

@@ -6,7 +6,6 @@ import com.store.Furniture_Home.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 import org.springframework.http.HttpStatus;
-import com.store.Furniture_Home.service.UserManagementService;
 import com.store.Furniture_Home.repositrory.CartRepository;
 import com.store.Furniture_Home.repositrory.CartItemRepository;
 import com.store.Furniture_Home.repositrory.UserRepository;
