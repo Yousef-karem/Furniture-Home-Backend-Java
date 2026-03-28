@@ -1,9 +1,8 @@
 package com.store.Furniture_Home.Controller;
 
 import com.store.Furniture_Home.Entity.Product;
-import com.store.Furniture_Home.Repository.ProductRepository;
+import com.store.Furniture_Home.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,22 +13,36 @@ import java.util.Optional;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
-    // API 1: view all products
+    // Get all products
     @GetMapping
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return productService.getAllProducts();
     }
 
-    // API 2: view product details by id
+    // Get product by id
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Integer id) {
-        Optional<Product> product = productRepository.findById(id);
-        if (product.isPresent()) {
-            return ResponseEntity.ok(product.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public Optional<Product> getProductById(@PathVariable Integer id) {
+        return productService.getProductById(id);
+    }
+
+    // Add product
+    @PostMapping
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
+
+    // Update product
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Integer id, @RequestBody Product product) {
+        return productService.updateProduct(id, product);
+    }
+
+    // Delete product
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable Integer id) {
+        productService.deleteProduct(id);
+        return "Product with id " + id + " deleted successfully!";
     }
 }
